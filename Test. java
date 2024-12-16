@@ -1,0 +1,49 @@
+class CheckBox {
+    String label;
+    boolean isCheckBox;
+
+    // Constructor
+    public CheckBox(String label, boolean isCheckBox) {
+        this.label = label;
+        this.isCheckBox = isCheckBox;
+    }
+
+    // Getters
+    public String getLabel() {
+        return label;
+    }
+
+    public boolean isCheckBox() {
+        return isCheckBox;
+    }
+}
+
+public class CheckBoxPositionFinder {
+    public static int findLECGPosition(CheckBox[] checkBoxes) {
+        for (int i = 0; i < checkBoxes.length; i++) {
+            // Check if it's a checkbox and if the label matches "LECG"
+            if (checkBoxes[i].isCheckBox() && "LECG".equals(checkBoxes[i].getLabel())) {
+                return i; // Return the position (index)
+            }
+        }
+        return -1; // Return -1 if "LECG" checkbox is not found
+    }
+
+    public static void main(String[] args) {
+        // Sample array of objects
+        CheckBox[] checkBoxes = {
+            new CheckBox("ABC", true),
+            new CheckBox("XYZ", true),
+            new CheckBox("LECG", true),
+            new CheckBox("DEF", true)
+        };
+
+        int position = findLECGPosition(checkBoxes);
+
+        if (position != -1) {
+            System.out.println("\"LECG\" checkbox is at position: " + position);
+        } else {
+            System.out.println("\"LECG\" checkbox not found.");
+        }
+    }
+}
